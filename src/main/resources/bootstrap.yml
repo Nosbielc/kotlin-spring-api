@@ -3,3 +3,7 @@ spring:
     name: kotlin-spring-api
   profiles:
     active: [ dev ]
+
+application:
+  title: kotlin-spring-api
+  version: 1.0.0
