@@ -1,11 +1,10 @@
-package com.nosbielc.kotlinspringapi.model
+package com.nosbielc.kotlinspringapi.controller.request
 
 /**
  * @author Cleibson Gomes (https://github.com/Nosbielc) ON 2023-09-13
  * @project kotlin-spring-api
  */
-data class CostumerModel (
-    var id : String,
+data class PostCustomerRequest (
     var name : String,
     var email : String
 )
