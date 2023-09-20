@@ -3,7 +3,10 @@ spring:
     name: kotlin-spring-api
   profiles:
     active: [ dev ]
+  jackson:
+    default-property-inclusion: non_null
 
 application:
   title: kotlin-spring-api
   version: 1.0.0
+
