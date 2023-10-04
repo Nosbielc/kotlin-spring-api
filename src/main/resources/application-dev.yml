@@ -12,3 +12,11 @@ spring:
       hibernate:
         format_sql: true
         dialect: org.hibernate.dialect.H2Dialect
+
+application:
+  security:
+    jwt:
+      secret-key: 777404E635266556A586E3272357577738782F413F4428472B4B6250645367566B5970777
+      expiration: 86400000 # a day
+      refresh-token:
+        expiration: 604800000 # 7 days
