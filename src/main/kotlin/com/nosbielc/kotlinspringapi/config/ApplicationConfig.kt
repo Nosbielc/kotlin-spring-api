@@ -19,8 +19,8 @@ import org.springframework.security.crypto.password.PasswordEncoder
 class ApplicationConfig(private val repository: UserRepository) {
 
     @Bean
-    fun userDetailsService(): UserDetailsService = UserDetailsService { username ->
-        repository.findByUsername(username);
+    fun userDetailsService(): UserDetailsService = UserDetailsService { email ->
+        repository.findByEmail(email);
     }
 
     @Bean

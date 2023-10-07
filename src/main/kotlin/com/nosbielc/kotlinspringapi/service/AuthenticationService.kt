@@ -36,8 +36,10 @@ class AuthenticationService (
         val salt =  passwordService.generateSalt()
         val passWord = passwordService.hashPassword(request.password, salt)
         val user = UserModel(null,
-            username = request.email,
-            password = passWord,
+            firstName = request.firstname,
+            lastName = request.lastname,
+            email = request.email,
+            pass = passWord,
             salt = salt,
             roles = roleDefault
             )

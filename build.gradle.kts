@@ -34,6 +34,8 @@ dependencies {
     developmentOnly("org.springframework.boot:spring-boot-devtools")
     annotationProcessor("org.projectlombok:lombok")
     testImplementation("org.springframework.boot:spring-boot-starter-test")
+    runtimeOnly("com.mysql:mysql-connector-j")
+    compileOnly("org.flywaydb:flyway-mysql")
     runtimeOnly ("com.h2database:h2")
     implementation ("org.flywaydb:flyway-core")
     implementation( "org.springframework.boot:spring-boot-starter-validation")

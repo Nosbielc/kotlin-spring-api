@@ -16,11 +16,17 @@ data class UserModel(
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     var id: Long? = null,
 
-    @Column(nullable = false, unique = true)
-    var username: String,
+    @Column(nullable = false)
+    var firstName: String,
 
     @Column(nullable = false)
-    var password: String,
+    var lastName: String,
+
+    @Column(nullable = false, unique = true)
+    var email: String,
+
+    @Column(nullable = false)
+    var pass: String,
 
     @Column(nullable = false)
     var salt: String,
@@ -53,11 +59,11 @@ data class UserModel(
     }
 
     override fun getPassword(): String {
-        return "${this.password} and ${this.salt}"
+        return "${this.pass} and ${this.salt}"
     }
 
     override fun getUsername(): String {
-        return this.username
+        return this.email
     }
 
     override fun isAccountNonExpired(): Boolean {

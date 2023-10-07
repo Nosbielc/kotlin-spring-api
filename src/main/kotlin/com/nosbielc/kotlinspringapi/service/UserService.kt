@@ -1,5 +1,6 @@
 package com.nosbielc.kotlinspringapi.service
 
+import com.nosbielc.kotlinspringapi.controller.request.RegisterRequest
 import com.nosbielc.kotlinspringapi.model.UserModel
 import com.nosbielc.kotlinspringapi.repository.UserRepository
 import org.springframework.stereotype.Service
@@ -14,20 +15,22 @@ class UserService (
     val userRepository: UserRepository
 ) {
 
-    fun createUser(username: String, rawPassword: String) {
+    fun createUser(request: RegisterRequest) {
         val salt = passwordService.generateSalt()
-        val hashedPassword = passwordService.hashPassword(rawPassword, salt)
+        val hashedPassword = passwordService.hashPassword(request.password, salt)
 
         val user = UserModel(
-            username = username,
-            password = hashedPassword,
+            firstName = request.firstname,
+            lastName = request.lastname,
+            email = request.email,
+            pass = hashedPassword,
             salt = salt
         )
         userRepository.save(user)
     }
 
-    fun authenticateUser(username: String, rawPassword: String): Boolean {
-        val user = userRepository.findByUsername(username) ?: return false
-        return passwordService.isPasswordValid(rawPassword, user.salt, user.password)
+    fun authenticateUser(email: String, rawPassword: String): Boolean {
+        val user = userRepository.findByEmail(email) ?: return false
+        return passwordService.isPasswordValid(rawPassword, user.salt, user.pass)
     }
 }
